@@ -28,7 +28,6 @@ func (p *Path) AziStart() float64 {
 	return 90.0 - math.Atan2((p1.Y-p0.Y), p1.X-p0.X)*180/math.Pi - 15
 }
 
-
 type ScreenTransform struct {
 	Minx, Maxx, Miny, Maxy float64
 	Scale, Xc, Yc, W, H   float64
@@ -64,7 +63,6 @@ func (t *ScreenTransform) ToScreen(x, y float64) (a, b float64) {
 	return a, b
 }
 
-
 // converts a DMS P1/90-style DMS string to decimal
 func decFromDMS(text string) (float64, error) {
 	var mult float64 = 1
@@ -93,7 +91,6 @@ func decFromDMS(text string) (float64, error) {
 	s += float64(d)
 	return mult * s, nil
 }
-
 
 func dmFromDecDegree(decdeg float64) string {
 	// sign:=decdeg<0
