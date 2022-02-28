@@ -116,9 +116,11 @@ func dmFromDecDegree(decdeg float64) string {
 func SphericalDistance(p1,p2 Point,r float64) float64{
 	a:=math.Sin((p2.Y/180*math.Pi-p1.Y/180*math.Pi)/2.0)
 	a*=a
-	b:=math.Sin(p2.X/180*math.Pi-p1.X/180*math.Pi)+a
+	b:=math.Sin(p2.X/180*math.Pi-p1.X/180*math.Pi)
+	b*=b
+
 	c:=math.Cos(p1.Y/180*math.Pi)*math.Cos(p2.Y/180*math.Pi)*b*b
-	c=math.Sqrt(c)
+	c=math.Sqrt(a+b*c)
 	c=math.Asin(c)
 	d:=c*2*r
 	return d
