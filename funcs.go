@@ -29,7 +29,7 @@ func (p *Path) AziStart() float64 {
 	p0 := p.Waypoints[0]
 	p1 := p.Waypoints[1]
 	// corr:=math.Cos(p0.y)
-	return 90.0 - math.Atan2((p1.Y-p0.Y), p1.X-p0.X)*180/math.Pi - 15
+	return 90.0 - math.Atan2((p1.Y-p0.Y), p1.X-p0.X)*180/math.Pi
 }
 
 func (p *Path) Length() float64{
