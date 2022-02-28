@@ -124,6 +124,6 @@ func SphericalDistance(p1,p2 Point,r float64) float64{
 	b*=b
 	c:=a+math.Cos(lat1)*math.Cos(lat2)*b
 	d:=2*r*math.Asin(math.Sqrt(c))	
-	return d
+	return d  
 }
 
