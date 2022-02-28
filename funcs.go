@@ -16,6 +16,10 @@ func (p *Point) Stringer() string {
 	return fmt.Sprintf("%s: %.3f,%.3f", p.Label, p.X, p.Y)
 }
 
+func (p *Point) Dist(q Point) float64{
+	return math.Sqrt((p.X-q.X)*(p.X-q.X)+(p.Y-q.Y)*(p.Y-q.Y))
+}
+
 type Path struct {
 	Waypoints []Point
 	Label string
@@ -26,6 +30,14 @@ func (p *Path) AziStart() float64 {
 	p1 := p.Waypoints[1]
 	// corr:=math.Cos(p0.y)
 	return 90.0 - math.Atan2((p1.Y-p0.Y), p1.X-p0.X)*180/math.Pi - 15
+}
+
+func (p *Path) Length() float64{
+	d:=0.0
+	for i:=0;i<len(p.Waypoints)-1;i++{
+		d+= p.Waypoints[i].Dist(p.Waypoints[i+1])
+	}
+	return d
 }
 
 type ScreenTransform struct {
